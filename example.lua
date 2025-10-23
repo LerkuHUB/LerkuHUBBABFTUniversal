@@ -1,3 +1,101 @@
+-- Создаём ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game:GetService("CoreGui")
+
+-- Основная панель (уменьшенный размер)
+local Frame = Instance.new("Frame")
+Frame.Parent = ScreenGui
+Frame.Position = UDim2.new(0.5, -150, 0.5, -75)  -- центр экрана, смещение на половину размера
+Frame.Size = UDim2.new(0, 300, 0, 150)  -- компактные габариты
+Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Frame.BackgroundTransparency = 0.3
+Frame.BorderSizePixel = 0
+Frame.Active = false  -- отключено перетаскивание
+Frame.Draggable = false
+
+-- Закругление углов панели
+local UICorner = Instance.new("UICorner")
+UICorner.Parent = Frame
+UICorner.CornerRadius = UDim.new(0, 12)  -- слегка уменьшенный радиус
+
+-- Центральный текст
+local TextLabel = Instance.new("TextLabel")
+TextLabel.Parent = Frame
+TextLabel.Position = UDim2.new(0.5, 0, 0.5, 0)  -- точное центрирование
+TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)  -- точка привязки к центру
+TextLabel.Size = UDim2.new(0, 260, 0, 40)  -- ширина меньше панели для отступов
+TextLabel.Text = "Loading..."
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 50
+TextLabel.BackgroundTransparency = 1
+TextLabel.Font = Enum.Font.GothamBold
+TextLabel.TextXAlignment = Enum.TextXAlignment.Center  -- выравнивание по горизонтали
+TextLabel.TextYAlignment = Enum.TextYAlignment.Center  -- выравнивание по вертикали
+
+-- Плавное исчезновение через 5 секундh
+task.delay(2, function()
+    game:GetService("TweenService"):Create(
+        Frame,
+        TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In),
+        {BackgroundTransparency = 1}
+    ):Play()
+    
+    -- Через 0.5 сек (после анимации) можно удалить элемент для оптимизации
+    task.delay(0.5, function()
+        ScreenGui:Destroy()
+    end)
+end)
+
+wait(3.5)
+
+-- Создаём ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game:GetService("CoreGui")
+
+-- Основная панель (уменьшенный размер)
+local Frame = Instance.new("Frame")
+Frame.Parent = ScreenGui
+Frame.Position = UDim2.new(1, -220, 1, -170)  -- правый нижний угол с отступами 20px
+Frame.Size = UDim2.new(0, 200, 0, 80)  -- компактные габариты
+Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Frame.BackgroundTransparency = 0.3
+Frame.BorderSizePixel = 0
+Frame.Active = false  -- отключено перетаскивание
+Frame.Draggable = false
+
+-- Закругление углов панели
+local UICorner = Instance.new("UICorner")
+UICorner.Parent = Frame
+UICorner.CornerRadius = UDim.new(0, 12)  -- слегка уменьшенный радиус
+
+-- Центральный текст
+local TextLabel = Instance.new("TextLabel")
+TextLabel.Parent = Frame
+TextLabel.Position = UDim2.new(0.5, 0, 0.5, 0)  -- точное центрирование внутри фрейма
+TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)  -- точка привязки к центру
+TextLabel.Size = UDim2.new(0, 160, 0, 40)  -- ширина с отступами
+TextLabel.Text = "by AntiScam975"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 20  -- адаптирован под меньший размер окна
+TextLabel.BackgroundTransparency = 1
+TextLabel.Font = Enum.Font.GothamBold
+TextLabel.TextXAlignment = Enum.TextXAlignment.Center  -- выравнивание по горизонтали
+TextLabel.TextYAlignment = Enum.TextYAlignment.Center  -- выравнивание по вертикали
+
+-- Плавное исчезновение через 5 секунд
+task.delay(2.5, function()
+    game:GetService("TweenService"):Create(
+        Frame,
+        TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In),
+        {BackgroundTransparency = 1}
+    ):Play()
+    
+    -- Через 0.5 сек (после анимации) удаляем элемент
+    task.delay(0.5, function()
+        ScreenGui:Destroy()
+    end)
+end)
+
 -- 1. Импортируем сервисы
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
